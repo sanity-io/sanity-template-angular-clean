@@ -1,3 +1,6 @@
 <div class="container">
   <app-welcome></app-welcome>
+  <div *ngFor="let post of posts$ | async">
+    <app-card [post]="post"></app-card>
+  </div>
 </div>
