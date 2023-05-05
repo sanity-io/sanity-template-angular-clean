@@ -7,6 +7,8 @@ import { CardComponent } from './card/card.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SanityImagePipe } from './sanity-image.pipe';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,11 @@ import { PostComponent } from './post/post.component';
     CardComponent,
     WelcomeComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    SanityImagePipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
