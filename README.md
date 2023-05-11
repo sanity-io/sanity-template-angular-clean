@@ -15,7 +15,7 @@ This starter uses [Angular](https://angular.io/) for the front end and [Sanity](
 >
 > This is **not** a monorepo setup. We put them both in one repository for the sake of simplicity. You might want to have separate repositories for each of the folders, to make it easier to deploy the app and the studio separately.
 >
-> This example runs primarly as a Single Page Application and is not suitable for a performant production website. You can look into [server- and pre-rendering Angular Universal apps](https://angular.io/guide/universal) if you plan to make it so. This examples have those configuraitons ready as well.
+> This example runs primarly as a Single Page Application and is not suitable for a performant production website. You can look into [server- and pre-rendering Angular Universal apps](https://angular.io/guide/universal) if you plan to make it so.
 
 ## Prerequisities
 
