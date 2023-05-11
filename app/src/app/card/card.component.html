@@ -5,11 +5,15 @@
     alt="Cover image"
     [src]="post.mainImage | sanityImage : 520"
   />
-  <div class="card__cover--none"></div>
+  <div *ngIf="!post.mainImage" class="card__cover--none"></div>
 
   <div class="card__container">
     <h3 class="card__title">
-      <a class="card__link">
+      <a
+        [routerLink]="'/post/' + post.slug.current"
+        class="card__link"
+        [href]="'/post/' + post.slug.current"
+      >
         {{ post.title }}
       </a>
     </h3>
