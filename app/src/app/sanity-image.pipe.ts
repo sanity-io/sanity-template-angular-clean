@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { SanityService } from './sanity.service';
 

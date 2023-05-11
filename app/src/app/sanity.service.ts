@@ -5,7 +5,9 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Post } from 'src/types';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +28,20 @@ export class SanityService {
   private sanityClient(): SanityClient {
     return createClient(this.clientConfig);
   }
-  fetch<T>(query: string) {
-    return this.sanityClient().observable.fetch(query);
-  }
+
   getImageUrlBuilder(source: SanityImageSource): ImageUrlBuilder {
     return this.imageUrlBuilder.image(source);
+  }
+
+  async getAllPosts(): Promise<Post[]> {
+    return await this.sanityClient().fetch(
+      '*[_type == "post" && defined(slug.current)]|order(_createdAt desc)'
+    );
+  }
+  async getPost(slug: string): Promise<Post> {
+    return await this.sanityClient().fetch(
+      '*[_type == "post" && slug.current == $slug][0]',
+      { slug }
+    );
   }
 }
