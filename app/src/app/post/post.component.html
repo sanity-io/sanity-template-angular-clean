@@ -1,1 +1,21 @@
-<p>post works!</p>
+<article class="post">
+  <img
+    *ngIf="post.mainImage"
+    class="post__cover"
+    [src]="post.mainImage | sanityImage : 1920"
+    alt="Cover image"
+    width="100%"
+  />
+  <div *ngIf="!post.mainImage" class="post__cover--none"></div>
+
+  <div class="post__container">
+    <h1 class="post__title">{{ post.title }}</h1>
+    <p class="post__excerpt">{{ post.excerpt }}</p>
+    <p class="post__date"></p>
+    <div
+      *ngIf="post.body"
+      class="post__content"
+      [innerHTML]="post.body | portableTextToHTML"
+    ></div>
+  </div>
+</article>

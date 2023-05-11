@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SanityImagePipe } from './sanity-image.pipe';
+import { PortableTextToHTML } from './portable-text.pipe';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { SanityImagePipe } from './sanity-image.pipe';
     HomeComponent,
     PostComponent,
     SanityImagePipe,
+    PortableTextToHTML,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  providers: [SanityImagePipe, PortableTextToHTML],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
