@@ -5,7 +5,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { Post } from 'src/types';
 
