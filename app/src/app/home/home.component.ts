@@ -1,17 +1,6 @@
 import { SanityService } from './../sanity.service';
 import { Component, OnInit } from '@angular/core';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { Observable } from 'rxjs';
-
-export interface Post {
-  _id: string;
-  title: string;
-  excerpt?: string;
-  slug: {
-    current: string;
-  };
-  mainImage?: SanityImageSource;
-}
+import { Post } from 'src/types';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +8,15 @@ export interface Post {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  posts$: Observable<Post[]>;
+  posts: Post[] = [];
 
-  constructor(private sanityService: SanityService) {
-    this.posts$ = this.sanityService.fetch(
-      '*[_type == "post" && defined(slug.current)]|order(_createdAt desc)'
-    );
+  constructor(private sanityService: SanityService) {}
+  ngOnInit(): void {
+    this.getAllPosts();
   }
-  ngOnInit(): void {}
+
+  async getAllPosts(): Promise<Post[]> {
+    this.posts = await this.sanityService.getAllPosts();
+    return this.posts;
+  }
 }
