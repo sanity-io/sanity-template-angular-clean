@@ -1,4 +1,4 @@
 <section>
-  <app-welcome *ngIf="!posts"></app-welcome>
+  <app-welcome *ngIf="!posts.length"></app-welcome>
   <app-card *ngFor="let post of posts" [post]="post"></app-card>
 </section>

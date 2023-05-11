@@ -1,9 +1,9 @@
-const PROJECT_ID = '';
-const DATASET = '';
+const PROJECT_ID = "";
+const DATASET = "";
 
 if (!PROJECT_ID || !DATASET) {
   throw new Error(
-    'Sanity project ID and dataset name are required. Go into `app/src/environments/environment.ts` and set them.'
+    "Sanity project ID and dataset name are required. Go into `app/src/environments/environment.ts` and set them."
   );
 }
 
@@ -12,7 +12,7 @@ export const environment = {
   sanity: {
     projectId: PROJECT_ID,
     dataset: DATASET,
-    apiVersion: '2022-05-01',
+    apiVersion: "2022-05-01",
     useCdn: true, // set to false for fresh data
   },
 };

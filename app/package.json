@@ -6,11 +6,7 @@
     "dev": "npm start",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "dev:ssr": "ng run angular-test:serve-ssr",
-    "serve:ssr": "node dist/angular-test/server/main.js",
-    "build:ssr": "ng build && ng run angular-test:server",
-    "prerender": "ng run angular-test:prerender"
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^16.0.1",
@@ -36,7 +32,6 @@
     "@angular-devkit/build-angular": "^16.0.1",
     "@angular/cli": "~16.0.1",
     "@angular/compiler-cli": "^16.0.1",
-    "@nguniversal/builders": "^16.0.0",
     "@types/express": "^4.17.0",
     "@types/jasmine": "~4.3.0",
     "@types/node": "^14.15.0",
