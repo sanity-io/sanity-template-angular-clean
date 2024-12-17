@@ -1,4 +1,5 @@
 {
+  "name": "angular-app",
   "private": true,
   "scripts": {
     "ng": "ng",

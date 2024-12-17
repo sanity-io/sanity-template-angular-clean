@@ -1,56 +1,94 @@
-# A minimal Angular SPA with Sanity Studio
+# Clean Angular + Sanity app
 
-This starter uses [Angular](https://angular.io/) for the front end and [Sanity](https://www.sanity.io/) to handle its content.
+This template includes a [Angular](https://angular.dev/) app with a [Sanity Studio](https://www.sanity.io/) – an open-source React application that connects to your Sanity project’s hosted dataset. The Studio is configured locally and can then be deployed for content collaboration.
 
-## Featuring
+## Features
 
-- How to fetch content as data from [the Sanity Content Lake](https://www.sanity.io/docs/datastore)
-- How to render block content with [Portable Text](https://www.sanity.io/docs/presenting-block-text)
-- A [Sanity Studio](https://www.sanity.io/docs/sanity-studio) to create and edit content
-- How to crop and render images with [Sanity Image URLs](https://www.sanity.io/docs/image-url)
+- Fetch content seamlessly with [Sanity Content Lake](https://www.sanity.io/docs/datastore).
+- Render beautiful block content using [Portable Text](https://www.sanity.io/docs/presenting-block-text).
+- Manage and create content with the intuitive [Sanity Studio](https://www.sanity.io/docs/sanity-studio).
+- Advanced image cropping and rendering via [Sanity Image URLs](https://www.sanity.io/docs/image-url).
 
-> **Note**
->
-> This starter features an `/app` and a `/studio` folder. The `/app` folder contains the frontend code, and the `/studio` folder contains the Sanity Studio code.
->
-> This is **not** a monorepo setup. We put them both in one repository for the sake of simplicity. You might want to have separate repositories for each of the folders, to make it easier to deploy the app and the studio separately.
->
-> This example runs primarly as a Single Page Application and is not suitable for a performant production website. You can look into [server- and pre-rendering Angular Universal apps](https://angular.io/guide/universal) if you plan to make it so.
+## Demo
 
-## Prerequisities
+https://sanity-template-angular-clean.sanity.build
 
-- [Node.js](https://nodejs.org/en/) (v16.12 or later)
-- [Sanity CLI](https://www.sanity.io/docs/getting-started-with-sanity-cli) (optional)
+## Getting Started
 
-## Getting started
+### Install the template
 
-The following instructions will take you in **both** the `/app` and `/studio` folders.
+#### 1. Initialize template with Sanity CLI
 
-1. `npm install` to install dependencies in both folders
-2. In the `/studio` folder, run `npm create sanity@latest init --env` (or use `sanity init --env` if you have the CLI installed). This will:
+Run the command in your Terminal to initialize this template on your local computer.
 
-   - ask you to select or create a Sanity project and dataset
-   - output a `.env` file with appropriate variables
+See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
-3. Copy your project ID and dataset name to the variables into `/app/src/environments/environments.ts`
-4. From the `/studio` folder, run `npx sanity cors add http://localhost:4200 --no-credentials`, to allow your app to request data from the browser (Go here to learn more about [CORS](https://www.sanity.io/docs/cors))
-5. `npm run dev` to start the development servers in both folders
+```shell
+npm create sanity@latest -- --template sanity-template-angular-clean
+```
 
-Your Angular app should now be running on [http://localhost:4200/](http://localhost:4200/) and Studio on [http://localhost:3333/](http://localhost:3333/).
+#### 2. Configure your angular environment variables
 
-_Feel free to move each folder to its separate location and check them into version control._
+Copy your project ID and dataset name to the variables into `/angular-app/src/environments/environments.ts`. You can find these in `/studio/.env`.
 
-### Add content
+#### 3. Run the application and Sanity Studio
 
-1. Visit the Studio and create and publish a new `Post` document
-2. Visit the App and refresh the page to see your content rendered on the page
+Navigate back to the template's root directory and start the development servers by running the following command
 
-The schema for the `Post` document is defined in the `/studio/schemas` folder. You can add more documents and schemas to the Studio to suit your needs.
+```shell
+npm run dev
+```
 
-## Deployments
+#### 4. Open the app and sign in to the Studio
 
-The `/app` and `/studio` folders are meant to be deployed separately.
+Open the Angular app running locally in your browser on [http://localhost:4200](http://localhost:4200).
 
-Feel free to deploy the App to whichever hosting provider you prefer, like [Vercel](https://vercel.com/), [Netlify](https://netlify.com), or [Cloudflare Pages](https://pages.cloudflare.com).
+Open the Studio running locally in your browser on [http://localhost:3333](http://localhost:3333). You should now see a screen prompting you to log in to the Studio. Use the same service (Google, GitHub, or email) that you used when you logged in to the CLI.
 
-You can deploy the Sanity Studio by running `sanity deploy` in the `/studio` repository, provided you have the `sanity` package installed globally (`npm install --global sanity`). You can also run it with `npx sanity deploy` if you don't wish to install the CLI.
+### Adding content with Sanity
+
+#### 1. Publish your first document
+
+The template comes pre-defined with a schema containing a `Post` document type.
+
+From the Studio, click "+ Create" and select the `Post` document type. Go ahead and create and publish the document.
+
+Your content should now appear in your Angular app ([http://localhost:4200](http://localhost:4200)) as well as in the Studio on the "Presentation" Tab
+
+#### 2. Extending the Sanity schema
+
+The schema for the `Post` document type is defined in the `studio/src/schemaTypes/post.ts` file. You can [add more document types](https://www.sanity.io/docs/schema-types) to the schema to suit your needs.
+
+### Deploying your application and inviting editors
+
+#### 1. Deploy Sanity Studio
+
+Your Angular frontend (`/angular-app`) and Sanity Studio (`/studio`) are still only running on your local computer. It's time to deploy and get it into the hands of other content editors.
+
+Back in your Studio directory (`/studio`), run the following command to deploy your Sanity Studio.
+
+```shell
+npx sanity deploy
+```
+
+#### 2. Deploy Angular app to Vercel
+
+You have the freedom to deploy your Angular app to your hosting provider of choice. With Vercel and GitHub being a popular choice, we'll cover the basics of that approach.
+
+1. Create a GitHub repository from this project. [Learn more](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github).
+2. Create a new Vercel project and connect it to your Github repository.
+3. Set the `Root Directory` to your Angular app.
+4. Configure your Environment Variables.
+
+#### 3. Invite a collaborator
+
+Now that you’ve deployed your Angular application and Sanity Studio, you can optionally invite a collaborator to your Studio. Open up [Manage](https://www.sanity.io/manage), select your project and click "Invite project members"
+
+They will be able to access the deployed Studio, where you can collaborate together on creating content.
+
+## Resources
+
+- [Sanity documentation](https://www.sanity.io/docs)
+- [Angular documentation](https://angular.dev/overview)
+- [Join the Sanity Community](https://slack.sanity.io)
+- [Learn Sanity](https://www.sanity.io/learn)

@@ -12,7 +12,9 @@ export const environment = {
   sanity: {
     projectId: PROJECT_ID,
     dataset: DATASET,
-    apiVersion: "2022-05-01",
+    apiVersion: "2024-12-12",
     useCdn: true, // set to false for fresh data
   },
 };
+
+console.log("environment:", environment);
