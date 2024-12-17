@@ -27,9 +27,9 @@ See the documentation if you are [having issues with the CLI](https://www.sanity
 npm create sanity@latest -- --template sanity-template-angular-clean
 ```
 
-#### 2. Configure your angular environment variables
+#### 2. Configure your Angular environment variables
 
-Copy your project ID and dataset name to the variables into `/angular-app/src/environments/environments.ts`. You can find these in `/studio/.env`.
+Copy your project ID and dataset name to the variables into `/angular-app/src/environments/environments.ts`.
 
 #### 3. Run the application and Sanity Studio
 
