@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "npm start",
-    "build": "ng build",
+    "dev": "npm run setEnvVars && npm start",
+    "build": "npm run setEnvVars && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "setEnvVars": "node src/environments/setEnvVars.ts"
   },
   "dependencies": {
     "@angular/animations": "^16.0.1",
@@ -24,6 +25,7 @@
     "@portabletext/types": "^2.0.2",
     "@sanity/client": "^6.0.1",
     "@sanity/image-url": "^1.0.2",
+    "dotenv": "^16.4.7",
     "express": "^4.15.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
