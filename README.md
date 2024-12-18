@@ -15,7 +15,7 @@ https://sanity-template-angular-clean.sanity.build
 
 ## Getting Started
 
-### Install the template
+### Installing the template
 
 #### 1. Initialize template with Sanity CLI
 
@@ -27,11 +27,7 @@ See the documentation if you are [having issues with the CLI](https://www.sanity
 npm create sanity@latest -- --template sanity-template-angular-clean
 ```
 
-#### 2. Configure your Angular environment variables
-
-Copy your project ID and dataset name to the variables into `/angular-app/src/environments/environments.ts`.
-
-#### 3. Run the application and Sanity Studio
+#### 2. Run the application and Sanity Studio
 
 Navigate back to the template's root directory and start the development servers by running the following command
 
@@ -39,7 +35,7 @@ Navigate back to the template's root directory and start the development servers
 npm run dev
 ```
 
-#### 4. Open the app and sign in to the Studio
+#### 3. Open the app and sign in to the Studio
 
 Open the Angular app running locally in your browser on [http://localhost:4200](http://localhost:4200).
 
