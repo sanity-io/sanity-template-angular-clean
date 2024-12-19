@@ -24,7 +24,7 @@ Run the command in your Terminal to initialize this template on your local compu
 See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```shell
-npm create sanity@latest -- --template sanity-template-angular-clean
+npm create sanity@latest -- --template sanity-io/sanity-template-angular-clean
 ```
 
 #### 2. Run the application and Sanity Studio
