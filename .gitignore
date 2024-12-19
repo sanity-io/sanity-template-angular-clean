@@ -42,3 +42,8 @@ testem.log
 Thumbs.db
 .vercel
 .angular
+
+# env files
+.env
+.env.*
+!.env.example
