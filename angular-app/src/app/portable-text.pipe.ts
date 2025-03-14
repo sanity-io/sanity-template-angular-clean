@@ -1,15 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 
 import { PortableTextComponents, toHTML } from '@portabletext/to-html';
 import { PortableTextBlock } from '@portabletext/types';
 import { SanityImagePipe } from './sanity-image.pipe';
 
-@Pipe({
-  name: 'portableTextToHTML',
-  standalone: false,
-})
+@Pipe({ name: 'portableTextToHTML' })
 export class PortableTextToHTML implements PipeTransform {
-  constructor(private sanityImagePipe: SanityImagePipe) {}
+  private sanityImagePipe = inject(SanityImagePipe);
 
   components: PortableTextComponents = {
     types: {

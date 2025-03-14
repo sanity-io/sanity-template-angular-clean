@@ -1,17 +1,21 @@
 import { SanityService } from './../sanity.service';
-import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/types';
+import { Component, OnInit, inject } from '@angular/core';
+import { Post } from '../types';
+import { NgIf, NgFor } from '@angular/common';
+import { WelcomeComponent } from '../welcome/welcome.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  standalone: false,
+  imports: [NgIf, WelcomeComponent, NgFor, CardComponent],
 })
 export class HomeComponent implements OnInit {
+  private sanityService = inject(SanityService);
+
   posts: Post[] = [];
 
-  constructor(private sanityService: SanityService) {}
   ngOnInit(): void {
     this.getAllPosts();
   }

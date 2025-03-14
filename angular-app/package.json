@@ -11,14 +11,12 @@
     "setEnvVars": "node src/environments/setEnvVars.ts"
   },
   "dependencies": {
-    "@angular/animations": "^19.2.2",
     "@angular/common": "^19.2.2",
     "@angular/compiler": "^19.2.2",
     "@angular/core": "^19.2.2",
     "@angular/forms": "^19.2.2",
     "@angular/platform-browser": "^19.2.2",
     "@angular/platform-browser-dynamic": "^19.2.2",
-    "@angular/platform-server": "^19.2.2",
     "@angular/router": "^19.2.2",
     "@portabletext/to-html": "^2.0.0",
     "@portabletext/types": "^2.0.2",
@@ -27,8 +25,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.15.2",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.3",
@@ -36,8 +33,7 @@
     "@angular/compiler-cli": "^19.2.2",
     "@types/express": "^4.17.0",
     "@types/jasmine": "~4.3.0",
-    "@types/node": "^18.0.0",
-    "browser-sync": "^3.0.0",
+    "@types/node": "^20.0.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

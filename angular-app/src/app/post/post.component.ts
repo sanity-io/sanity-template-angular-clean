@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SanityService } from '../sanity.service';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'src/types';
+import { Post } from '../types';
+import { NgIf } from '@angular/common';
+import { SanityImagePipe } from '../sanity-image.pipe';
+import { PortableTextToHTML } from '../portable-text.pipe';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
-  standalone: false,
+  imports: [NgIf, SanityImagePipe, PortableTextToHTML],
 })
 export class PostComponent implements OnInit {
-  post: Post;
+  private sanityService = inject(SanityService);
+  private route = inject(ActivatedRoute);
+
+  post: Post | undefined;
   slug: string = '';
 
-  constructor(
-    private sanityService: SanityService,
-    private route: ActivatedRoute,
-  ) {
+  constructor() {
     this.slug = this.route.snapshot.params['slug'];
   }
 

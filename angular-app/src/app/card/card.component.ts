@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Post } from 'src/types';
+import { Post } from '../types';
+import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { SanityImagePipe } from '../sanity-image.pipe';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  standalone: false,
+  imports: [NgIf, RouterLink, SanityImagePipe],
 })
 export class CardComponent {
   @Input() post: Post;
