@@ -1,4 +1,4 @@
-<ng-container *ngIf="post">
+<ng-container *ngIf="post() as post">
   <div class="card">
     <img
       *ngIf="post.mainImage"

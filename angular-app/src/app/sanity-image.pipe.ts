@@ -6,7 +6,14 @@ import { SanityService } from './sanity.service';
 export class SanityImagePipe implements PipeTransform {
   private sanityService = inject(SanityService);
 
-  transform(value: SanityImageSource, width?: number): string {
+  transform(
+    value: SanityImageSource | undefined,
+    width?: number,
+  ): string | null {
+    if (!value) {
+      return null;
+    }
+
     if (width) {
       return this.sanityService
         .getImageUrlBuilder(value)
