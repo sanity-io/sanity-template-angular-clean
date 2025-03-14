@@ -2,7 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { SanityService } from './sanity.service';
 
-@Pipe({ name: 'sanityImage' })
+@Pipe({
+  name: 'sanityImage',
+  standalone: false,
+})
 export class SanityImagePipe implements PipeTransform {
   constructor(private sanityService: SanityService) {}
 

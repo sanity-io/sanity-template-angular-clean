@@ -1,22 +1,23 @@
-import { Component, OnInit } from "@angular/core";
-import { SanityService } from "../sanity.service";
-import { ActivatedRoute } from "@angular/router";
-import { Post } from "src/types";
+import { Component, OnInit } from '@angular/core';
+import { SanityService } from '../sanity.service';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from 'src/types';
 
 @Component({
-  selector: "app-post",
-  templateUrl: "./post.component.html",
-  styleUrls: ["./post.component.css"],
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css'],
+  standalone: false,
 })
 export class PostComponent implements OnInit {
   post: Post;
-  slug: string = "";
+  slug: string = '';
 
   constructor(
     private sanityService: SanityService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
-    this.slug = this.route.snapshot.params["slug"];
+    this.slug = this.route.snapshot.params['slug'];
   }
 
   ngOnInit(): void {

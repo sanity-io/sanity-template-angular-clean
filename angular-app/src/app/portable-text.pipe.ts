@@ -4,7 +4,10 @@ import { PortableTextComponents, toHTML } from '@portabletext/to-html';
 import { PortableTextBlock } from '@portabletext/types';
 import { SanityImagePipe } from './sanity-image.pipe';
 
-@Pipe({ name: 'portableTextToHTML' })
+@Pipe({
+  name: 'portableTextToHTML',
+  standalone: false,
+})
 export class PortableTextToHTML implements PipeTransform {
   constructor(private sanityImagePipe: SanityImagePipe) {}
 
