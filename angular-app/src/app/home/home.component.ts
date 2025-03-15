@@ -12,7 +12,6 @@ import { CardComponent } from '../card/card.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
   imports: [WelcomeComponent, CardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
