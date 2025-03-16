@@ -15,7 +15,7 @@ import { CardComponent } from '../card/card.component';
   imports: [WelcomeComponent, CardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export default class HomeComponent {
   private sanityService = inject(SanityService);
 
   postsResource = resource({

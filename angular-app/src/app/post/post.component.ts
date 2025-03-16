@@ -17,7 +17,7 @@ import { PortableTextToHTML } from '../portable-text.pipe';
   imports: [SanityImagePipe, PortableTextToHTML],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostComponent {
+export default class PostComponent {
   slug = input.required<string>();
   private sanityService = inject(SanityService);
   postResource = resource({
