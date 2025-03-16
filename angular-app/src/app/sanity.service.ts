@@ -14,35 +14,25 @@ import { Post } from './types';
 export class SanityService {
   private client: SanityClient;
   private imageUrlBuilder: ImageUrlBuilder;
-  private clientConfig: ClientConfig = {
-    projectId: environment.sanity.projectId,
-    dataset: environment.sanity.dataset,
-    apiVersion: environment.sanity.apiVersion,
-    useCdn: environment.sanity.useCdn,
-  };
+  private clientConfig: ClientConfig = environment.sanity;
 
   constructor() {
-    this.client = this.sanityClient();
+    this.client = createClient(this.clientConfig);
     this.imageUrlBuilder = imageUrlBuilder(this.client);
-  }
-
-  private sanityClient(): SanityClient {
-    return createClient(this.clientConfig);
   }
 
   getImageUrlBuilder(source: SanityImageSource): ImageUrlBuilder {
     return this.imageUrlBuilder.image(source);
   }
 
-  async getAllPosts(): Promise<Post[]> {
-    return await this.sanityClient().fetch(
+  getAllPosts(): Promise<Post[]> {
+    return this.client.fetch(
       '*[_type == "post" && defined(slug.current)]|order(_createdAt desc)',
     );
   }
-  async getPost(slug: string): Promise<Post> {
-    return await this.sanityClient().fetch(
-      '*[_type == "post" && slug.current == $slug][0]',
-      { slug },
-    );
+  getPost(slug: string): Promise<Post> {
+    return this.client.fetch('*[_type == "post" && slug.current == $slug][0]', {
+      slug,
+    });
   }
 }
