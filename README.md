@@ -27,7 +27,22 @@ See the documentation if you are [having issues with the CLI](https://www.sanity
 npm create sanity@latest -- --template sanity-io/sanity-template-angular-clean
 ```
 
-#### 2. Run the application and Sanity Studio
+#### 2. Copy the project id and dataset to the Angular project
+
+Copy the project id and dataset from the generated `.env` file in the `/studio` directory to the Angular project's environment file.
+
+Specifically:
+
+1. Open the `/studio/.env` file and note the values for `SANITY_STUDIO_PROJECT_ID` and `SANITY_STUDIO_DATASET`
+2. Create or edit the `/angular-app/.env` file based on the `.env.example` template
+3. Add the following lines with your values:
+
+```
+SANITY_PROJECT_ID="your-project-id"
+SANITY_DATASET="your-dataset-name"
+```
+
+#### 3. Run the application and Sanity Studio
 
 Navigate back to the template's root directory and start the development servers by running the following command
 

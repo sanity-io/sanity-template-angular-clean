@@ -1,22 +1,25 @@
 import { SanityService } from './../sanity.service';
-import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/types';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  resource,
+} from '@angular/core';
+
+import { WelcomeComponent } from '../welcome/welcome.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  imports: [WelcomeComponent, CardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
-  posts: Post[] = [];
+export default class HomeComponent {
+  private sanityService = inject(SanityService);
 
-  constructor(private sanityService: SanityService) {}
-  ngOnInit(): void {
-    this.getAllPosts();
-  }
-
-  async getAllPosts(): Promise<Post[]> {
-    this.posts = await this.sanityService.getAllPosts();
-    return this.posts;
-  }
+  postsResource = resource({
+    loader: () => this.sanityService.getAllPosts(),
+    defaultValue: [],
+  });
 }

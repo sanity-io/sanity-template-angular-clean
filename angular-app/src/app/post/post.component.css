@@ -2,6 +2,11 @@
   width: 100%;
   margin: var(--space-1) 0 var(--space-4);
 }
+.post-loading {
+  font-size: var(--font-size-5);
+  line-height: var(--line-height-5);
+  margin-top: var(--space-6);
+}
 .post .post__cover,
 .post .post__cover--none {
   width: 100%;
