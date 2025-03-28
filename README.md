@@ -49,7 +49,7 @@ The template comes pre-defined with a schema containing a `Post` document type.
 
 From the Studio, click "+ Create" and select the `Post` document type. Go ahead and create and publish the document.
 
-Your content should now appear in your Angular app ([http://localhost:4200](http://localhost:4200)) as well as in the Studio on the "Presentation" Tab
+Your content should now appear in your Angular app ([http://localhost:4200](http://localhost:4200)).
 
 #### 2. Extending the Sanity schema
 
