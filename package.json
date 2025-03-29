@@ -6,7 +6,7 @@
     "dev": "concurrently \"npm run dev --workspace=angular-app\" \"npm run dev --workspace=studio\""
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.2"
   },
   "workspaces": [
     "angular-app",
