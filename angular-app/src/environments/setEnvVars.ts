@@ -4,8 +4,15 @@ const setEnv = () => {
   const writeFile = fs.writeFile;
   // Configure Angular `environment.ts` file path
   const targetPath = './src/environments/environment.ts';
-  // Load node modules
-  process.loadEnvFile('./.env');
+  
+  // Try to load .env file if it exists (for local development)
+  try {
+    process.loadEnvFile('./.env');
+  } catch (error) {
+    // .env file doesn't exist or can't be loaded (e.g., in production)
+    // This is fine, we'll use environment variables set by the deployment platform
+    console.log('No .env file found, using environment variables from deployment platform');
+  }
 
   if (!process.env['SANITY_PROJECT_ID'] || !process.env['SANITY_DATASET']) {
     console.error(
