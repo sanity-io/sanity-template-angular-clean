@@ -11,32 +11,32 @@
     "setEnvVars": "node src/environments/setEnvVars.ts"
   },
   "dependencies": {
-    "@angular/common": "^19.2.2",
-    "@angular/compiler": "^19.2.2",
-    "@angular/core": "^19.2.2",
-    "@angular/forms": "^19.2.2",
-    "@angular/platform-browser": "^19.2.2",
-    "@angular/platform-browser-dynamic": "^19.2.2",
-    "@angular/router": "^19.2.2",
-    "@portabletext/to-html": "^2.0.0",
-    "@portabletext/types": "^2.0.2",
-    "@sanity/client": "^6.0.1",
-    "@sanity/image-url": "^1.0.2",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "@angular/common": "^19.2.14",
+    "@angular/compiler": "^19.2.14",
+    "@angular/core": "^19.2.14",
+    "@angular/forms": "^19.2.14",
+    "@angular/platform-browser": "^19.2.14",
+    "@angular/platform-browser-dynamic": "^19.2.14",
+    "@angular/router": "^19.2.14",
+    "@portabletext/to-html": "^2.0.14",
+    "@portabletext/types": "^2.0.13",
+    "@sanity/client": "^6.29.1",
+    "@sanity/image-url": "^1.1.0",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.3",
-    "@angular/cli": "~19.2.3",
-    "@angular/compiler-cli": "^19.2.2",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
+    "@angular-devkit/build-angular": "^19.2.14",
+    "@angular/cli": "~19.2.14",
+    "@angular/compiler-cli": "^19.2.14",
+    "@types/jasmine": "~5.1.8",
+    "jasmine-core": "~5.8.0",
+    "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
+    "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.3"
   },
   "engines": {
     "node": ">= 20.11"
