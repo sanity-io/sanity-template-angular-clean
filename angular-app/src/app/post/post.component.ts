@@ -1,31 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { SanityService } from "../sanity.service";
-import { ActivatedRoute } from "@angular/router";
-import { Post } from "src/types";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  resource,
+} from '@angular/core';
+
+import { SanityService } from '../sanity.service';
+import { SanityImagePipe } from '../sanity-image.pipe';
+import { PortableTextToHTML } from '../portable-text.pipe';
 
 @Component({
-  selector: "app-post",
-  templateUrl: "./post.component.html",
-  styleUrls: ["./post.component.css"],
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrl: './post.component.css',
+  imports: [SanityImagePipe, PortableTextToHTML],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostComponent implements OnInit {
-  post: Post;
-  slug: string = "";
-
-  constructor(
-    private sanityService: SanityService,
-    private route: ActivatedRoute
-  ) {
-    this.slug = this.route.snapshot.params["slug"];
-  }
-
-  ngOnInit(): void {
-    this.getPost(this.slug);
-  }
-
-  async getPost(slug: string): Promise<Post> {
-    this.post = await this.sanityService.getPost(slug);
-    console.log(this.post);
-    return this.post;
-  }
+export default class PostComponent {
+  slug = input.required<string>();
+  private sanityService = inject(SanityService);
+  postResource = resource({
+    request: this.slug,
+    loader: ({ request }) => this.sanityService.getPost(request),
+  });
 }

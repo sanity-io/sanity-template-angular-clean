@@ -1,4 +1,9 @@
 <section>
-  <app-welcome *ngIf="!posts.length"></app-welcome>
-  <app-card *ngFor="let post of posts" [post]="post"></app-card>
+  @let posts = postsResource.value();
+  @if (!posts.length) {
+    <app-welcome />
+  }
+  @for (post of posts; track post._id) {
+    <app-card [post]="post" />
+  }
 </section>
