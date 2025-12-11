@@ -11,7 +11,7 @@
     "setEnvVars": "node src/environments/setEnvVars.ts"
   },
   "dependencies": {
-    "@angular/common": "^19.2.2",
+    "@angular/common": "^19.2.16",
     "@angular/compiler": "^19.2.2",
     "@angular/core": "^19.2.2",
     "@angular/forms": "^19.2.2",
