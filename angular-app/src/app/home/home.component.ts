@@ -5,6 +5,7 @@ import {
   inject,
   resource,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { CardComponent } from '../card/card.component';
@@ -22,4 +23,10 @@ export default class HomeComponent {
     loader: () => this.sanityService.getAllPosts(),
     defaultValue: [],
   });
+
+  constructor() {
+    this.sanityService.refresh$
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.postsResource.reload());
+  }
 }

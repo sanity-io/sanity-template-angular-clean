@@ -5,6 +5,7 @@
         class="card__cover"
         alt="Cover image"
         [src]="post.mainImage | sanityImage: 520"
+        [attr.data-sanity]="sanityService.dataAttribute(post, 'mainImage')"
         />
     }
     @if (!post.mainImage) {

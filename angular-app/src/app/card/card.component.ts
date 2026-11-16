@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { Post } from '../types';
 import { SanityImagePipe } from '../sanity-image.pipe';
+import { SanityService } from '../sanity.service';
 
 @Component({
   selector: 'app-card',
@@ -13,4 +19,5 @@ import { SanityImagePipe } from '../sanity-image.pipe';
 })
 export class CardComponent {
   readonly post = input.required<Post>();
+  protected sanityService = inject(SanityService);
 }

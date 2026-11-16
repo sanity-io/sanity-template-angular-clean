@@ -5,6 +5,7 @@ import {
   input,
   resource,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SanityService } from '../sanity.service';
 import { SanityImagePipe } from '../sanity-image.pipe';
@@ -19,9 +20,15 @@ import { PortableTextToHTML } from '../portable-text.pipe';
 })
 export default class PostComponent {
   slug = input.required<string>();
-  private sanityService = inject(SanityService);
+  protected sanityService = inject(SanityService);
   postResource = resource({
     request: this.slug,
     loader: ({ request }) => this.sanityService.getPost(request),
   });
+
+  constructor() {
+    this.sanityService.refresh$
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.postResource.reload());
+  }
 }

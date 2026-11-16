@@ -30,7 +30,14 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css",
+              {
+                "input": "@sanity/visual-editing-standalone/styles.css",
+                "bundleName": "visual-editing",
+                "inject": false
+              }
+            ],
             "scripts": []
           },
           "configurations": {
