@@ -8,6 +8,7 @@ This template includes a [Angular](https://angular.dev/) app with a [Sanity Stud
 - Render beautiful block content using [Portable Text](https://www.sanity.io/docs/presenting-block-text).
 - Manage and create content with the intuitive [Sanity Studio](https://www.sanity.io/docs/sanity-studio).
 - Advanced image cropping and rendering via [Sanity Image URLs](https://www.sanity.io/docs/image-url).
+- Click-to-edit overlays and live preview in the [Presentation tool](https://www.sanity.io/docs/presentation) via [`@sanity/visual-editing-standalone`](https://github.com/sanity-io/visual-editing/tree/main/packages/visual-editing-standalone).
 
 ## Demo
 
@@ -69,6 +70,43 @@ Your content should now appear in your Angular app ([http://localhost:4200](http
 #### 2. Extending the Sanity schema
 
 The schema for the `Post` document type is defined in the `studio/src/schemaTypes/post.ts` file. You can [add more document types](https://www.sanity.io/docs/schema-types) to the schema to suit your needs.
+
+### Visual Editing
+
+The Studio includes the Presentation tool, which shows the Angular app next to the document editor. When the app is loaded by Presentation and a viewer token is configured, it switches to preview mode:
+
+- Content is fetched from the API (not the CDN) with the perspective selected in Presentation, which defaults to drafts. Strings are [stega-encoded](https://www.sanity.io/docs/stega) so overlays know which document and field they came from. Images get a `data-sanity` attribute instead.
+- `src/app/visual-editing.ts` enables the overlays with `@sanity/visual-editing-standalone`, keeps the Presentation URL bar in sync with the Angular router, and reloads content when you edit a document or press refresh in Presentation.
+
+Anyone who opens the app outside Presentation, or uses a build without a token, gets the normal site: published content from the CDN, no overlays and no stega. The overlay code is only downloaded in preview mode.
+
+#### Try it locally
+
+1. Create a token with the Viewer role in [Manage](https://www.sanity.io/manage) under API > Tokens, and add it to `/angular-app/.env`:
+
+   ```
+   SANITY_API_READ_TOKEN="your-viewer-token"
+   ```
+
+2. Allow the Angular app to send authenticated requests by adding its origin as a CORS origin with credentials. From the `/studio` directory:
+
+   ```shell
+   npx sanity cors add http://localhost:4200 --credentials
+   ```
+
+3. Restart `npm run dev`, open the Studio at [http://localhost:3333](http://localhost:3333) and select **Presentation**. Hover over a title, excerpt, body text or image and click it to open that field. Your edits show up in the preview as you type.
+
+#### Environment variables
+
+| Variable                    | Where               | Description                                                                                   |
+| --------------------------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| `SANITY_API_READ_TOKEN`     | `/angular-app/.env` | Viewer token used to fetch drafts in preview mode. Leave it empty to turn Visual Editing off. |
+| `SANITY_STUDIO_URL`         | `/angular-app/.env` | Studio URL that overlays open. Defaults to `http://localhost:3333`.                           |
+| `SANITY_STUDIO_PREVIEW_URL` | `/studio/.env`      | URL of the Angular app shown in Presentation. Defaults to `http://localhost:4200`.            |
+
+#### Deploying with Visual Editing
+
+The Angular app has no server, so the token is bundled into the browser JavaScript. Never set `SANITY_API_READ_TOKEN` on your public deployment. Instead, deploy a second copy of the app with the token, keep it private (for example behind your host's deployment protection), and add its origin to CORS with credentials. Then set `SANITY_STUDIO_PREVIEW_URL` in the Studio to that deployment, and `SANITY_STUDIO_URL` in the preview deployment to your deployed Studio.
 
 ### Deploying your application and inviting editors
 

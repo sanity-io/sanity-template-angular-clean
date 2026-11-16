@@ -28,6 +28,12 @@ const setEnv = () => {
     apiVersion: "2024-12-12",
     useCdn: true, // set to false for fresh data
   },
+  preview: {
+    // Viewer token for Visual Editing. It is bundled into the browser JavaScript,
+    // so only set it for local development or an access-protected preview deployment.
+    token: '${process.env['SANITY_API_READ_TOKEN'] || ''}',
+    studioUrl: '${process.env['SANITY_STUDIO_URL'] || 'http://localhost:3333'}',
+  },
 };
 
 console.log("environment:", environment);

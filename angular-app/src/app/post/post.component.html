@@ -8,6 +8,7 @@
       <img
         class="post__cover"
         [src]="post.mainImage | sanityImage: 1920"
+        [attr.data-sanity]="sanityService.dataAttribute(post, 'mainImage')"
         alt="Cover image"
         width="100%"
       />
